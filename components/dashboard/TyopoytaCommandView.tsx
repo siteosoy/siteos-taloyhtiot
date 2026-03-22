@@ -99,7 +99,7 @@ export function SiteosRecommendationHero() {
       >
         <div className="pointer-events-none absolute -right-20 top-0 h-48 w-48 rounded-full bg-blue-400/[0.11] blur-3xl" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-blue-200/50 to-transparent" />
-        <div className="relative flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
+        <div className="relative flex min-w-0 flex-col gap-6 sm:gap-8 lg:flex-row lg:items-end lg:justify-between lg:gap-12">
           <div className="min-w-0 max-w-3xl space-y-4">
             <div className="flex flex-wrap items-center gap-2.5">
               <span className="rounded-full border border-blue-200/90 bg-blue-50/95 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-blue-900">
@@ -112,8 +112,8 @@ export function SiteosRecommendationHero() {
               Talousennusteen mukaan ennakoiva toteutus tasaa kustannuksia pitkällä aikavälillä.
             </p>
           </div>
-          <div className="flex shrink-0 flex-col items-stretch gap-2 sm:flex-row sm:items-center lg:flex-col lg:items-end">
-            <span className="btn-primary inline-flex justify-center px-8 py-3 text-[15px] font-semibold shadow-lg shadow-blue-600/[0.18] transition group-hover:bg-blue-600">
+          <div className="flex w-full shrink-0 flex-col items-stretch gap-2 sm:w-auto sm:flex-row sm:items-center lg:flex-col lg:items-end">
+            <span className="btn-primary inline-flex w-full justify-center px-8 py-3 text-[15px] font-semibold shadow-lg shadow-blue-600/[0.18] transition group-hover:bg-blue-600 sm:w-auto">
               Avaa Hallitus
             </span>
             <span className="text-center text-[12px] text-slate-500 lg:text-right">

@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Navbar } from "@/components/Navbar";
 import { Providers } from "@/components/Providers";
 import { SiteFooter } from "@/components/SiteFooter";
+import { SiteosAiFab } from "@/components/SiteosAiFab";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -58,10 +59,15 @@ export default function RootLayout({
             Siirry sisältöön
           </a>
           <Navbar />
-          <div id="main-content" className="flex min-h-0 flex-1 flex-col" tabIndex={-1}>
+          <div
+            id="main-content"
+            className="flex min-h-0 flex-1 flex-col pb-[4.5rem] md:pb-6"
+            tabIndex={-1}
+          >
             {children}
           </div>
           <SiteFooter />
+          <SiteosAiFab />
         </Providers>
       </body>
     </html>

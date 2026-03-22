@@ -29,19 +29,19 @@ body {
 
 @layer components {
   .page-shell {
-    @apply mx-auto w-full max-w-6xl flex-1 px-4 py-14 sm:px-6 lg:px-8 lg:py-16;
+    @apply mx-auto w-full max-w-6xl flex-1 px-3.5 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-16;
   }
 
   .page-shell-narrow {
-    @apply mx-auto w-full max-w-3xl flex-1 px-4 py-14 sm:px-6 lg:px-8 lg:py-16;
+    @apply mx-auto w-full max-w-3xl flex-1 px-3.5 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-16;
   }
 
   .section-y {
-    @apply mt-16 lg:mt-20;
+    @apply mt-12 sm:mt-14 lg:mt-20;
   }
 
   .section-y-tight {
-    @apply mt-12 lg:mt-14;
+    @apply mt-10 sm:mt-12 lg:mt-14;
   }
 
   .section-label {
@@ -77,11 +77,15 @@ body {
   }
 
   .stat-value {
-    @apply text-3xl font-semibold tracking-tight tabular-nums text-slate-900 sm:text-[2.05rem] sm:leading-none;
+    @apply text-[1.65rem] font-semibold leading-none tracking-tight tabular-nums text-slate-900 sm:text-[2.05rem];
   }
 
   .headline-hero {
-    @apply text-balance text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl lg:text-[3.25rem] lg:leading-[1.08];
+    @apply text-balance text-[1.75rem] font-semibold leading-[1.12] tracking-tight text-slate-900 sm:text-5xl sm:leading-tight lg:text-[3.25rem] lg:leading-[1.08];
+  }
+
+  .prose-width {
+    @apply max-w-[min(36rem,100%)];
   }
 
   .link-inline {

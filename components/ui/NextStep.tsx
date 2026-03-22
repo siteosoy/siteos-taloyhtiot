@@ -38,7 +38,7 @@ export function NextStep({ label, text, href, showArrow = true }: NextStepProps)
       <div className="mt-3">
         <Link
           href={href}
-          className="group inline-flex max-w-full items-center gap-2.5 rounded-xl bg-white/90 px-4 py-3 text-sm font-semibold text-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.04)] transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[#f4f7fb]"
+          className="group flex w-full max-w-full items-center justify-center gap-2.5 rounded-xl bg-white/90 px-4 py-3 text-sm font-semibold text-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.04)] transition hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[#f4f7fb] sm:inline-flex sm:w-auto sm:justify-start"
         >
           <span className="min-w-0 leading-snug">{text}</span>
           {showArrow ? (

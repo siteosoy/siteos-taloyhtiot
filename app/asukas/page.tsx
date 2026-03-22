@@ -481,7 +481,7 @@ export default function AsukasPage() {
               type="button"
               disabled={messageSubmitted}
               onClick={() => setMessageSubmitted(true)}
-              className="btn-primary shrink-0 disabled:pointer-events-none disabled:opacity-60"
+              className="btn-primary w-full shrink-0 disabled:pointer-events-none disabled:opacity-60 sm:w-auto"
             >
               {messageSubmitted ? "Lähetetty (demo)" : "Lähetä käsittelyyn"}
             </button>

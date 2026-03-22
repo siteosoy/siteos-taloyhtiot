@@ -74,13 +74,16 @@ export default function ControlPage() {
           title="Päivän tilanne ja kiireelliset"
           description="Talous, kiireelliset, automaatiot ja dokumentit samassa näkymässä. Kiireelliset näkyvät ensin."
           actions={
-            <div className="flex flex-col items-end gap-1.5 sm:text-right">
+            <div className="flex w-full flex-col gap-1.5 sm:w-auto sm:items-end sm:text-right">
               <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-amber-900/90">
                 Vaatii huomiota
               </p>
               <p className="text-2xl font-semibold tabular-nums text-slate-900">5</p>
               <p className="text-xs text-slate-500">kiireellistä tehtävää</p>
-              <Link href="/dashboard" className="link-inline mt-1.5 text-sm">
+              <Link
+                href="/dashboard"
+                className="link-inline mt-1.5 flex w-full justify-center text-sm sm:inline-flex sm:w-auto sm:justify-end"
+              >
                 Avaa työpöytä
               </Link>
             </div>
@@ -429,8 +432,8 @@ export default function ControlPage() {
                 Tehtävät jaettu vastuille — näkyvät SITEOS:ssa.
               </p>
             </div>
-            <div className="mt-6 overflow-hidden rounded-xl border border-slate-200/85 bg-slate-50/30">
-              <table className="w-full text-left text-sm">
+            <div className="-mx-1 mt-6 overflow-x-auto rounded-xl border border-slate-200/85 bg-slate-50/30 sm:mx-0">
+              <table className="w-full min-w-[520px] text-left text-sm">
                 <thead className="border-b border-slate-200/90 bg-white text-[11px] uppercase tracking-[0.12em] text-slate-500">
                   <tr>
                     <th className="px-4 py-3 font-semibold">Tehtävä</th>

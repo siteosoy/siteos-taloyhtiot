@@ -115,7 +115,7 @@ export default function ToiveetPage() {
           </div>
         ) : null}
 
-        <div className="grid gap-7 lg:grid-cols-[minmax(0,340px)_minmax(0,1fr)] lg:items-start lg:gap-10 xl:grid-cols-[minmax(0,380px)_minmax(0,1fr)]">
+        <div className="grid min-w-0 gap-8 lg:grid-cols-[minmax(0,340px)_minmax(0,1fr)] lg:items-start lg:gap-10 xl:grid-cols-[minmax(0,380px)_minmax(0,1fr)]">
           <RoleEmphasis when="asukas" className="min-w-0">
           <div className="flex flex-col gap-3">
             <p className="px-0.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">Toiveet</p>

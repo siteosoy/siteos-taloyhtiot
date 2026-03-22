@@ -41,7 +41,7 @@ export function TaloudellinenVaikutus({ data }: Props) {
         <div className="pointer-events-none absolute -right-16 -top-20 h-40 w-40 rounded-full bg-blue-400/[0.07] blur-3xl" aria-hidden />
         <div className="relative">
           <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">Kustannus</p>
-          <p className="mt-4 text-[2.125rem] font-semibold leading-none tracking-[-0.03em] text-slate-950 tabular-nums sm:text-[2.375rem]">
+          <p className="mt-4 text-[1.75rem] font-semibold leading-none tracking-[-0.03em] text-slate-950 tabular-nums sm:text-[2.125rem] md:text-[2.375rem]">
             {formatEuroRange(data.costMin, data.costMax)}
           </p>
           <p className="mt-4 max-w-md text-sm leading-relaxed text-slate-600">

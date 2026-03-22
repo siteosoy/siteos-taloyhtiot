@@ -81,8 +81,8 @@ export function HallitusDecisionWorkspace() {
             </div>
           </div>
 
-          <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(220px,280px)] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_300px]">
-            <div className="space-y-10">
+          <div className="mt-8 grid min-w-0 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(220px,280px)] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_300px]">
+            <div className="min-w-0 space-y-10">
               <section aria-labelledby="hallitus-seuraava">
                 <p id="hallitus-seuraava" className="sr-only">
                   Seuraava toimenpide ja perustelut
@@ -130,7 +130,7 @@ export function HallitusDecisionWorkspace() {
               </div>
             </div>
 
-            <aside className="flex flex-col gap-8 lg:sticky lg:top-24">
+            <aside className="flex min-w-0 flex-col gap-8 lg:sticky lg:top-24">
               <Surface padding="md" variant="default" className="bg-white/90">
                 <HallitusProjectFlow phase={phase} />
               </Surface>

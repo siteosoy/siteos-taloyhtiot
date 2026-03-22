@@ -26,8 +26,8 @@ const features = [
 export default function Home() {
   return (
     <div className="gradient-hero flex flex-1 flex-col">
-      <section className="mx-auto flex w-full max-w-6xl flex-col gap-16 px-4 pb-28 pt-16 sm:px-6 lg:gap-20 lg:px-8 lg:pt-16">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
+      <section className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-3.5 pb-24 pt-12 sm:gap-16 sm:px-6 sm:pb-28 sm:pt-16 lg:gap-20 lg:px-8">
+        <div className="grid min-w-0 gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
           <RoleEmphasis when="asukas" className="min-w-0">
             <div className="space-y-8">
               <RoleViewBadge />
@@ -37,7 +37,7 @@ export default function Home() {
               <h1 className="headline-hero">
                 Asukkaan viesti tehtäväksi ja oikealle taholle
               </h1>
-              <p className="max-w-xl text-lg leading-[1.65] text-slate-600">
+              <p className="prose-width text-base leading-[1.65] text-slate-600 sm:text-lg">
                 Asukkaan kuvauksesta syntyy tehtävä, joka ohjautuu talon sääntöjen
                 mukaan. Huolto ja hallitus näkevät saman tilanteen. Kiireelliset
                 nousevat esiin ilman sähköpostin kiertämistä.
@@ -46,10 +46,10 @@ export default function Home() {
                 Demo vastaa tuotantoa; tässä näkymässä asukasviestejä ei tallenneta.
               </p>
               <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:items-center">
-                <Link href="/control" className="btn-primary-lg text-center">
+                <Link href="/control" className="btn-primary-lg w-full text-center sm:w-auto">
                   Siirry ohjausnäkymään
                 </Link>
-                <Link href="/dashboard" className="btn-secondary-lg text-center">
+                <Link href="/dashboard" className="btn-secondary-lg w-full text-center sm:w-auto">
                   Hallituksen työpöytä
                 </Link>
               </div>
@@ -79,10 +79,10 @@ export default function Home() {
 
         <div>
           <p className="section-label text-center">Käytännössä</p>
-          <p className="mx-auto mb-12 max-w-2xl text-balance text-center text-2xl font-semibold tracking-tight text-slate-900">
+          <p className="mx-auto mb-10 max-w-2xl text-balance px-0.5 text-center text-xl font-semibold tracking-tight text-slate-900 sm:mb-12 sm:text-2xl">
             Mitä tästä jää sähköpostiin verrattuna
           </p>
-          <div className="grid gap-6 md:grid-cols-3 md:gap-8">
+          <div className="grid min-w-0 gap-5 sm:gap-6 md:grid-cols-3 md:gap-8">
             {features.map((f) => (
               <Surface key={f.title} padding="lg" variant="elevated">
                 <h3 className="text-lg font-semibold tracking-tight text-slate-900">
@@ -97,8 +97,8 @@ export default function Home() {
         </div>
 
         <Surface variant="elevated" padding="lg" className="mx-auto w-full max-w-4xl">
-          <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-            <div>
+          <div className="flex min-w-0 flex-col gap-6 sm:gap-8 md:flex-row md:items-center md:justify-between">
+            <div className="min-w-0">
               <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-blue-700">
                 Koko ketju demossa
               </p>
@@ -109,11 +109,11 @@ export default function Home() {
                 Voit aloittaa ohjausnäkymästä tai käydä vaiheet läpi järjestyksessä.
               </p>
             </div>
-            <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
-              <Link href="/asukas" className="btn-primary text-center">
+            <div className="flex w-full shrink-0 flex-col gap-3 sm:w-auto sm:flex-row">
+              <Link href="/asukas" className="btn-primary w-full text-center sm:w-auto">
                 Asukas AI
               </Link>
-              <Link href="/huolto" className="btn-secondary text-center">
+              <Link href="/huolto" className="btn-secondary w-full text-center sm:w-auto">
                 Huollon näkymä
               </Link>
             </div>
