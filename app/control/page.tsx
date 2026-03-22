@@ -1,11 +1,19 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { DigitaalinenTiedottaminenSection } from "@/components/dashboard/DigitaalinenTiedottaminenSection";
+import { RoleEmphasis } from "@/components/role/RoleEmphasis";
+import { RoleViewBadge } from "@/components/role/RoleViewBadge";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Surface } from "@/components/ui/Surface";
 
-const kpis = [
-  { label: "Avoimet tehtävät", value: "24", delta: "+3 tänään" },
-  { label: "SLA kunnossa", value: "94%", delta: "7 päivän keskiarvo" },
-  { label: "Kiireelliset", value: "5", delta: "2 odottaa vastausta" },
-  { label: "Asukasviestejä (viikko)", value: "118", delta: "AI luokitellut 100%" },
+export const metadata: Metadata = {
+  title: "Ohjaus",
+};
+
+const snapshot = [
+  { label: "Avoimet tehtävät", value: "24", hint: "+3 tänään" },
+  { label: "Kiireelliset", value: "5", hint: "2 odottaa vastausta", emphasis: true as const },
+  { label: "SLA (7 pv)", value: "94%", hint: "Keskiarvo" },
 ];
 
 const urgent = [
@@ -20,115 +28,429 @@ const maintenance = [
   { task: "Pihan valaistuksen tarkastus", owner: "Kiinteistö", due: "Ma" },
 ];
 
+const automations = [
+  {
+    text: "Palotarkastusmuistutus lähetetty",
+    meta: "Isännöitsijä · tänään 08:12",
+  },
+  {
+    text: "Pihavalojen huolto lisätty tehtävälistaan",
+    meta: "Kiinteistö · eilen",
+  },
+  {
+    text: "Asukkaille tiedote: vesikatko huomenna",
+    meta: "Hallitus ja asukkaat · eilen",
+  },
+  {
+    text: "Huoltokirjan merkintä päivitetty automaattisesti",
+    meta: "LVIS · 3 pv sitten",
+  },
+];
+
+const whySiteos = [
+  {
+    title: "Vähemmän kysymyksiä",
+    body: "AI vastaa asukkaiden yleisiin kysymyksiin automaattisesti taloyhtiön omien sääntöjen perusteella.",
+  },
+  {
+    title: "Selkeä toiminta",
+    body: "Järjestelmä ei vain näytä tietoa, vaan ohjaa suoraan oikeaan toimenpiteeseen.",
+  },
+  {
+    title: "Parempi ennakointi",
+    body: "Talous AI auttaa välttämään kalliita yllätyksiä ja ajoittamaan remontit oikein.",
+  },
+] as const;
+
 export default function ControlPage() {
   return (
-    <div className="gradient-control flex flex-1 flex-col">
-      <div className="relative mx-auto w-full max-w-6xl flex-1 px-4 py-10 sm:px-6 lg:px-8">
-        <div className="pointer-events-none absolute inset-x-0 -top-24 h-72 bg-gradient-to-b from-blue-500/15 to-transparent blur-3xl" />
+    <div className="gradient-control relative flex flex-1 flex-col">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-blue-500/[0.08] to-transparent" />
 
+      <div className="relative page-shell">
         <PageHeader
-          eyebrow="Operatiivinen ohjaus"
-          title="Ohjausnäkymä"
-          description="Koko taloyhtiön tilanne yhdellä silmäyksellä: KPI:t, tekoälyn tiivistelmä ja kiireelliset erillisellä paneelilla."
+          badge={<RoleViewBadge />}
+          eyebrow="Ohjauskeskus"
+          title="Päivän tilanne ja kiireelliset"
+          description="Talous, kiireelliset, automaatiot ja dokumentit samassa näkymässä. Kiireelliset näkyvät ensin."
+          actions={
+            <div className="flex flex-col items-end gap-1.5 sm:text-right">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-amber-900/90">
+                Vaatii huomiota
+              </p>
+              <p className="text-2xl font-semibold tabular-nums text-slate-900">5</p>
+              <p className="text-xs text-slate-500">kiireellistä tehtävää</p>
+              <Link href="/dashboard" className="link-inline mt-1.5 text-sm">
+                Avaa työpöytä
+              </Link>
+            </div>
+          }
         />
 
-        <div className="grid gap-6 lg:grid-cols-4">
-          {kpis.map((k) => (
-            <Surface key={k.label} variant="elevated" className="relative overflow-hidden">
-              <div className="absolute right-0 top-0 h-24 w-24 -translate-y-1/2 translate-x-1/2 rounded-full bg-blue-500/10 blur-2xl" />
-              <p className="text-xs font-medium uppercase tracking-wide text-slate-500">
-                {k.label}
-              </p>
-              <p className="mt-2 text-3xl font-semibold tracking-tight text-slate-900">
-                {k.value}
-              </p>
-              <p className="mt-1 text-xs text-slate-500">{k.delta}</p>
-            </Surface>
-          ))}
-        </div>
+        {/* Miksi SITEOS */}
+        <RoleEmphasis when="asukas">
+          <section className="section-y-tight" aria-labelledby="control-why-heading">
+          <h2 id="control-why-heading" className="section-label">
+            Miksi SITEOS
+          </h2>
+          <div className="grid gap-5 sm:gap-6 lg:grid-cols-3">
+            {whySiteos.map((item, i) => (
+              <Surface
+                key={item.title}
+                variant="elevated"
+                padding="lg"
+                className="border-l-[3px] border-l-slate-300/90 ring-1 ring-slate-200/80"
+              >
+                <p className="text-[11px] font-medium tabular-nums text-slate-400">
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <h3 className="mt-3 text-base font-semibold tracking-tight text-slate-900">
+                  {item.title}
+                </h3>
+                <p className="mt-2.5 text-sm leading-relaxed text-slate-600">{item.body}</p>
+              </Surface>
+            ))}
+          </div>
+        </section>
+        </RoleEmphasis>
 
-        <div className="mt-8 grid gap-6 lg:grid-cols-3">
-          <Surface variant="accent" padding="lg" className="lg:col-span-2">
-            <p className="text-xs font-semibold uppercase tracking-wider text-blue-700">
-              Tekoälyn tiivistelmä
-            </p>
-            <p className="mt-3 text-sm leading-relaxed text-slate-700">
-              Viikon viestit painottuivat hissi- ja LVIS-aiheisiin. Kolme
-              toistuvaa aihetta: hissin oven tunnistin, lämmön vaihtelut
-              porraskäytävässä ja parkkipaikan valaistus. Suositus: yhdistä
-              hissi-tehtävät yhdeksi urakkaohjelmaksi ja päivitä asukaille
-              eteneminen viikoittain.
-            </p>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {["Hissi", "LVIS", "Sähkö", "Turvallisuus"].map((t) => (
-                <span
-                  key={t}
-                  className="rounded-full border border-blue-100 bg-white/80 px-3 py-1 text-xs font-medium text-blue-800"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-          </Surface>
-
-          <Surface padding="lg" className="border-amber-200/80 bg-gradient-to-br from-amber-50/90 to-white">
-            <p className="text-xs font-semibold uppercase tracking-wider text-amber-800">
-              Kiireelliset
-            </p>
-            <ul className="mt-4 space-y-3">
-              {urgent.map((u) => (
-                <li
-                  key={u.title}
-                  className="rounded-xl border border-amber-100 bg-white/90 p-3"
-                >
-                  <div className="flex items-start justify-between gap-2">
-                    <p className="text-sm font-medium text-slate-900">{u.title}</p>
-                    <span className="shrink-0 rounded-md bg-amber-100 px-2 py-0.5 text-[10px] font-semibold uppercase text-amber-900">
-                      {u.tag}
+        {/* Talous ja analyysi */}
+        <RoleEmphasis when={["hallitus", "isannointi"]}>
+          <section className="section-y" aria-labelledby="control-ai-heading">
+          <h2 id="control-ai-heading" className="section-label">
+            Talous ja analyysi
+          </h2>
+          <Link
+            href="/talous"
+            className="group block rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#f4f7fb]"
+          >
+            <Surface
+              variant="elevated"
+              padding="lg"
+              className="relative overflow-hidden border-emerald-200/70 shadow-card-hero ring-2 ring-emerald-300/50 transition group-hover:ring-emerald-400/60"
+            >
+              <div className="pointer-events-none absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-emerald-500 to-emerald-600/90" />
+              <div className="pointer-events-none absolute -right-16 top-0 h-40 w-40 rounded-full bg-emerald-400/12 blur-2xl" />
+              <div className="relative flex flex-col gap-6 pl-1 sm:pl-2 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
+                <div className="min-w-0 max-w-2xl space-y-3">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="rounded-full bg-emerald-600 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white shadow-sm">
+                      Talous
+                    </span>
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-emerald-800">
+                      Keskeinen näkymä
                     </span>
                   </div>
-                  <p className="mt-1 text-xs text-slate-500">{u.time}</p>
+                  <p className="text-xl font-semibold tracking-tight text-slate-900 sm:text-2xl sm:leading-snug">
+                    Kulut, vastike ja remonttien ajoitus
+                  </p>
+                  <p className="text-sm leading-relaxed text-slate-600">
+                    Kulut, kunnossapitosuunnitelma ja tehtävät samassa: arvioitu säästö,
+                    seuraavat vaiheet ja vastikkeeseen vaikuttavat riskit.
+                  </p>
+                  <div className="flex flex-wrap gap-2 pt-0.5">
+                    <span className="inline-flex items-center rounded-lg border border-emerald-200/90 bg-emerald-50/80 px-3 py-1.5 text-xs font-semibold tabular-nums text-emerald-950">
+                      12 400 € / 12 kk
+                    </span>
+                    <span className="inline-flex items-center rounded-lg border border-slate-200/90 bg-slate-50/80 px-3 py-1.5 text-xs font-medium text-slate-700">
+                      5 etappia · 24 kk
+                    </span>
+                  </div>
+                </div>
+                <div className="flex shrink-0 flex-col items-stretch gap-2 sm:flex-row sm:items-center lg:flex-col lg:items-end">
+                  <span className="btn-primary inline-flex justify-center px-6 shadow-lg shadow-blue-600/20 transition group-hover:bg-blue-500">
+                    Avaa talousnäkymä
+                  </span>
+                  <span className="text-center text-xs text-slate-500 lg:text-right">
+                    Aineistoa hallituksen kokoukseen
+                  </span>
+                </div>
+              </div>
+            </Surface>
+          </Link>
+
+          <Link
+            href="/historia"
+            className="group section-y-tight block rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#f4f7fb]"
+          >
+            <Surface
+              variant="elevated"
+              padding="lg"
+              className="relative overflow-hidden border-indigo-200/70 shadow-card ring-2 ring-indigo-200/45 transition group-hover:ring-indigo-300/55"
+            >
+              <div className="pointer-events-none absolute -right-14 top-0 h-36 w-36 rounded-full bg-indigo-400/10 blur-2xl" />
+              <div className="relative flex flex-col gap-5 pl-0.5 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
+                <div className="min-w-0 max-w-2xl space-y-2.5">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="rounded-full bg-indigo-600 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-white shadow-sm">
+                      Taloyhtiö
+                    </span>
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-indigo-900/85">
+                      Projektipankki
+                    </span>
+                  </div>
+                  <p className="text-lg font-semibold tracking-tight text-slate-900 sm:text-xl">
+                    Taloyhtiön historia
+                  </p>
+                  <p className="text-sm leading-relaxed text-slate-600">
+                    Kaikki projektit, taloustiedot ja muutokset yhdessä paikassa
+                  </p>
+                </div>
+                <span className="btn-secondary inline-flex shrink-0 justify-center px-6 transition group-hover:border-indigo-200 group-hover:bg-indigo-50/80">
+                  Avaa projektipankki
+                </span>
+              </div>
+            </Surface>
+          </Link>
+
+          <div className="section-y-tight">
+            <Surface
+              variant="accent"
+              padding="lg"
+              className="relative overflow-hidden shadow-card-blue-lg ring-1 ring-blue-100/80"
+            >
+              <div className="relative">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-blue-700">
+                  Viikkokatsaus
+                </p>
+                <p className="mt-2 text-sm font-medium text-slate-900">
+                  Painopiste: hissi ja LVIS
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                  Toistuvat teemat: hissin ovitunnistin, lämpötilan vaihtelu porraskäytävässä ja
+                  parkkipaikan valaistus. Ehdotus: hissi yhdeksi urakkaohjelmaksi; asukkaille
+                  lyhyt viikkotiedote etenemisestä.
+                </p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {["Hissi", "LVIS", "Sähkö", "Turvallisuus"].map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-full border border-blue-100/90 bg-white/90 px-3 py-1 text-xs font-medium text-blue-900"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </Surface>
+          </div>
+        </section>
+        </RoleEmphasis>
+
+        {/* Kiireelliset */}
+        <RoleEmphasis when={["huolto", "hallitus"]}>
+          <section className="section-y" aria-labelledby="control-alerts-heading">
+          <h2 id="control-alerts-heading" className="section-label">
+            Kiireelliset
+          </h2>
+          <div className="grid gap-6 lg:grid-cols-3 lg:gap-7">
+            <Surface
+              padding="lg"
+              className="relative overflow-hidden border-slate-200/90 bg-white ring-1 ring-slate-200/75 lg:col-span-1"
+            >
+              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-500">
+                Tilannekuva
+              </p>
+              <dl className="mt-5 space-y-4">
+                {snapshot.map((s) => (
+                  <div
+                    key={s.label}
+                    className={
+                      s.emphasis
+                        ? "rounded-xl border border-amber-200/80 bg-amber-50/50 px-3.5 py-3"
+                        : "border-b border-slate-100 pb-4 last:border-0 last:pb-0"
+                    }
+                  >
+                    <dt className="text-xs text-slate-500">{s.label}</dt>
+                    <dd
+                      className={`mt-1 text-2xl font-semibold tabular-nums tracking-tight ${
+                        s.emphasis ? "text-amber-950" : "text-slate-900"
+                      }`}
+                    >
+                      {s.value}
+                    </dd>
+                    <dd className="mt-0.5 text-xs text-slate-500">{s.hint}</dd>
+                  </div>
+                ))}
+              </dl>
+              <p className="mt-5 border-t border-slate-100 pt-4 text-xs leading-relaxed text-slate-500">
+                Asukasviestejä viikossa: <span className="font-medium text-slate-700">118</span>
+                <span className="text-slate-400"> · </span>
+                luokittelu järjestelmässä
+              </p>
+            </Surface>
+
+            <Surface
+              padding="lg"
+              className="relative overflow-hidden border-amber-200/60 bg-gradient-to-b from-amber-50/90 to-white ring-1 ring-amber-200/50 lg:col-span-2"
+            >
+              <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
+                <div>
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-amber-900">
+                    Vaatii toimenpiteen
+                  </p>
+                  <p className="mt-1 text-sm text-amber-900/80">
+                    Kolme viimeisintä; koko lista työpöydällä
+                  </p>
+                </div>
+                <Link
+                  href="/dashboard"
+                  className="link-inline shrink-0 self-start sm:self-auto"
+                >
+                  Avaa työpöytä
+                </Link>
+              </div>
+              <ul className="mt-5 space-y-2.5">
+                {urgent.map((u) => (
+                  <li
+                    key={u.title}
+                    className="rounded-xl border border-amber-100/95 bg-white/95 px-4 py-3.5"
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <p className="text-sm font-semibold leading-snug text-slate-900">{u.title}</p>
+                      <span
+                        className={`shrink-0 rounded-md px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${
+                          u.tag === "Kriittinen"
+                            ? "bg-red-100 text-red-900"
+                            : "bg-amber-100 text-amber-950"
+                        }`}
+                      >
+                        {u.tag}
+                      </span>
+                    </div>
+                    <p className="mt-2 text-xs tabular-nums text-slate-500">{u.time}</p>
+                  </li>
+                ))}
+              </ul>
+            </Surface>
+          </div>
+        </section>
+        </RoleEmphasis>
+
+        {/* Automaatiot */}
+        <RoleEmphasis when="isannointi">
+          <section className="section-y" aria-labelledby="control-auto-heading">
+          <h2 id="control-auto-heading" className="section-label">
+            Automaatiot
+          </h2>
+          <Surface
+            padding="lg"
+            variant="elevated"
+            className="overflow-hidden ring-1 ring-slate-200/75"
+          >
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-5">
+              <div>
+                <p className="text-sm font-medium text-slate-900">Käynnissä ja viimeksi suoritetut</p>
+                <p className="mt-1 text-sm text-slate-500">
+                  Muistutukset, tiedotteet ja kirjaukset talon säännöillä — vähemmän käsityötä.
+                </p>
+              </div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200/80 bg-emerald-50/90 px-3 py-1.5 text-xs font-semibold text-emerald-900">
+                <span className="relative flex h-2 w-2" aria-hidden>
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-40 motion-reduce:animate-none" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                </span>
+                Automaatiot käynnissä
+              </div>
+            </div>
+            <ul className="divide-y divide-slate-100">
+              {automations.map((a) => (
+                <li key={a.text} className="flex gap-3 py-4 first:pt-5">
+                  <span
+                    className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-emerald-500/90"
+                    aria-hidden
+                  />
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-medium leading-snug text-slate-800">{a.text}</p>
+                    <p className="mt-1 text-xs tabular-nums text-slate-500">{a.meta}</p>
+                  </div>
                 </li>
               ))}
             </ul>
           </Surface>
-        </div>
+        </section>
+        </RoleEmphasis>
 
-        <Surface padding="lg" className="mt-8">
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
-                Huolto ja tehtävät
-              </p>
+        <DigitaalinenTiedottaminenSection />
+
+        {/* Dokumentit */}
+        <section className="section-y" aria-labelledby="control-docs-heading">
+          <h2 id="control-docs-heading" className="section-label">
+            Dokumentit
+          </h2>
+          <Surface padding="lg" variant="elevated" className="ring-1 ring-slate-200/80">
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between lg:gap-10">
+              <div className="min-w-0 max-w-xl space-y-3">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-slate-700 ring-1 ring-slate-200/90">
+                    AI-seuranta
+                  </span>
+                  <span className="text-xs text-slate-500">Päivitetty 02/2027</span>
+                </div>
+                <h3 className="text-lg font-semibold tracking-tight text-slate-900">
+                  Pelastussuunnitelma
+                </h3>
+                <p className="text-sm leading-relaxed text-slate-600">
+                  Muutokset ja velvoitteet seurannassa; hyväksyntä jää taloyhtiölle.
+                </p>
+              </div>
+              <ul className="w-full shrink-0 space-y-2.5 text-sm text-slate-700 lg:max-w-sm">
+                <li className="flex gap-2">
+                  <span className="text-slate-400" aria-hidden>
+                    ·
+                  </span>
+                  Riskikartoitus ja poistumistiet tarkistettu
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-slate-400" aria-hidden>
+                    ·
+                  </span>
+                  Vastuut ja yhteystiedot päivitetty
+                </li>
+                <li className="flex gap-2">
+                  <span className="text-slate-400" aria-hidden>
+                    ·
+                  </span>
+                  Uudet tarkastusvälit huomioitu
+                </li>
+              </ul>
+            </div>
+          </Surface>
+        </section>
+
+        {/* Seuraavat tehtävät */}
+        <section className="section-y pb-2" aria-labelledby="control-tasks-heading">
+          <h2 id="control-tasks-heading" className="section-label">
+            Seuraavat tehtävät
+          </h2>
+          <Surface padding="lg" variant="elevated" className="ring-1 ring-slate-200/75">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
               <p className="text-sm text-slate-600">
-                Strukturoidut tehtävät reititetty oikeille tahoille.
+                Tehtävät jaettu vastuille — näkyvät SITEOS:ssa.
               </p>
             </div>
-            <span className="inline-flex w-fit rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
-              Synkronoitu SITEOS:iin
-            </span>
-          </div>
-          <div className="mt-6 overflow-hidden rounded-xl border border-slate-100">
-            <table className="w-full text-left text-sm">
-              <thead className="bg-slate-50/80 text-xs uppercase tracking-wide text-slate-500">
-                <tr>
-                  <th className="px-4 py-3 font-medium">Tehtävä</th>
-                  <th className="px-4 py-3 font-medium">Vastuu</th>
-                  <th className="px-4 py-3 font-medium">Määräaika</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100 bg-white">
-                {maintenance.map((m) => (
-                  <tr key={m.task}>
-                    <td className="px-4 py-3 font-medium text-slate-900">{m.task}</td>
-                    <td className="px-4 py-3 text-slate-600">{m.owner}</td>
-                    <td className="px-4 py-3 text-slate-600">{m.due}</td>
+            <div className="mt-6 overflow-hidden rounded-xl border border-slate-200/85 bg-slate-50/30">
+              <table className="w-full text-left text-sm">
+                <thead className="border-b border-slate-200/90 bg-white text-[11px] uppercase tracking-[0.12em] text-slate-500">
+                  <tr>
+                    <th className="px-4 py-3 font-semibold">Tehtävä</th>
+                    <th className="px-4 py-3 font-semibold">Vastuu</th>
+                    <th className="px-4 py-3 font-semibold">Määräaika</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </Surface>
+                </thead>
+                <tbody className="divide-y divide-slate-100 bg-white">
+                  {maintenance.map((m) => (
+                    <tr key={m.task} className="hover:bg-slate-50/80">
+                      <td className="px-4 py-3.5 font-medium text-slate-900">{m.task}</td>
+                      <td className="px-4 py-3.5 text-slate-600">{m.owner}</td>
+                      <td className="px-4 py-3.5 tabular-nums text-slate-600">{m.due}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </Surface>
+        </section>
       </div>
     </div>
   );

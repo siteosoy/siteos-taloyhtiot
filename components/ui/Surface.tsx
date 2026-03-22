@@ -21,10 +21,10 @@ export function Surface({
 }: SurfaceProps) {
   const variantClass =
     variant === "accent"
-      ? "border-blue-200/80 bg-gradient-to-br from-white to-blue-50/50 shadow-sm shadow-blue-500/5"
+      ? "border-blue-200/75 bg-gradient-to-br from-white via-white to-blue-50/40 shadow-card-accent ring-1 ring-blue-100/70"
       : variant === "elevated"
-        ? "border-slate-200/90 bg-white shadow-md shadow-slate-900/5"
-        : "border-slate-200/80 bg-white/90 shadow-sm shadow-slate-900/[0.04]";
+        ? "border-slate-200/95 bg-white shadow-card ring-1 ring-slate-200/80"
+        : "border-slate-200/95 bg-white shadow-sm shadow-slate-900/[0.04] ring-1 ring-slate-200/70";
 
   return (
     <div

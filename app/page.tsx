@@ -1,84 +1,94 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { RoleEmphasis } from "@/components/role/RoleEmphasis";
+import { RoleViewBadge } from "@/components/role/RoleViewBadge";
 import { Surface } from "@/components/ui/Surface";
+
+export const metadata: Metadata = {
+  title: "Etusivu",
+};
 
 const features = [
   {
-    title: "Luonnollinen asukasviesti",
-    text: "Asukas kuvaa tilanteen omilla sanoillaan — tekoäly tiivistää ja luokittelee.",
+    title: "Asukas kirjoittaa itse",
+    text: "Teksti pysyy asukkaan sanoina. Järjestelmä tiivistää, luokittelee ja tekee tehtävän.",
   },
   {
-    title: "Oikea reitti ensi yrityksellä",
-    text: "Viestit ohjautuvat huollolle, hallitukselle tai hätäketjuun sääntöjen mukaan.",
+    title: "Oikea vastaanottaja talon säännöillä",
+    text: "Huolto, hallitus tai hätä: viesti ohjautuu sille, jolle se kuuluu.",
   },
   {
-    title: "Yksi näkymä koko taloyhtiölle",
-    text: "Tilannekuva, tehtävät ja päätökset samassa premium-käyttöliittymässä.",
+    title: "Sama näkymä kaikille",
+    text: "Tehtävät ja kiireellisyys yhdessä listassa. Ei viestiketjuja sähköpostissa.",
   },
 ];
 
 export default function Home() {
   return (
     <div className="gradient-hero flex flex-1 flex-col">
-      <section className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 pb-20 pt-12 sm:px-6 lg:px-8 lg:pt-16">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
-          <div className="space-y-6">
-            <p className="inline-flex rounded-full border border-blue-200/80 bg-blue-50/80 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-blue-700">
-              Taloyhtiöille
-            </p>
-            <h1 className="text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl lg:text-[3.25rem] lg:leading-[1.1]">
-              Kiinteistön hallinta, joka ymmärtää asukkaan viestin
-            </h1>
-            <p className="max-w-xl text-lg leading-relaxed text-slate-600">
-              SITEOS yhdistää asukkaan kuvauksen, tekoälyreitityksen ja huollon
-              tehtävät. Hallitus näkee kokonaiskuvan — kiireelliset tapaukset
-              erottuvat selvästi.
-            </p>
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Link
-                href="/control"
-                className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-600/25 transition hover:bg-blue-500"
-              >
-                Avaa ohjausnäkymä
-              </Link>
-              <Link
-                href="/dashboard"
-                className="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white/80 px-6 py-3 text-sm font-semibold text-slate-800 shadow-sm transition hover:border-blue-200 hover:bg-blue-50/50"
-              >
-                Katso työpöytä
-              </Link>
+      <section className="mx-auto flex w-full max-w-6xl flex-col gap-16 px-4 pb-28 pt-16 sm:px-6 lg:gap-20 lg:px-8 lg:pt-16">
+        <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
+          <RoleEmphasis when="asukas" className="min-w-0">
+            <div className="space-y-8">
+              <RoleViewBadge />
+              <p className="inline-flex rounded-full border border-blue-200/85 bg-blue-50/95 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-blue-800">
+                Taloyhtiön viestit ja tehtävät
+              </p>
+              <h1 className="headline-hero">
+                Asukkaan viesti tehtäväksi ja oikealle taholle
+              </h1>
+              <p className="max-w-xl text-lg leading-[1.65] text-slate-600">
+                Asukkaan kuvauksesta syntyy tehtävä, joka ohjautuu talon sääntöjen
+                mukaan. Huolto ja hallitus näkevät saman tilanteen. Kiireelliset
+                nousevat esiin ilman sähköpostin kiertämistä.
+              </p>
+              <p className="max-w-xl text-sm leading-relaxed text-slate-500">
+                Demo vastaa tuotantoa; tässä näkymässä asukasviestejä ei tallenneta.
+              </p>
+              <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:items-center">
+                <Link href="/control" className="btn-primary-lg text-center">
+                  Siirry ohjausnäkymään
+                </Link>
+                <Link href="/dashboard" className="btn-secondary-lg text-center">
+                  Hallituksen työpöytä
+                </Link>
+              </div>
             </div>
-          </div>
+          </RoleEmphasis>
           <Surface variant="accent" padding="lg" className="relative overflow-hidden">
-            <div className="pointer-events-none absolute -right-8 -top-8 h-40 w-40 rounded-full bg-blue-400/20 blur-3xl" />
-            <p className="text-xs font-semibold uppercase tracking-wider text-blue-600">
-              Esikatselu
+            <div className="pointer-events-none absolute -right-8 -top-8 h-40 w-40 rounded-full bg-blue-400/18 blur-3xl" />
+            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-blue-700">
+              Esimerkki viestistä
             </p>
-            <p className="mt-2 text-sm font-medium text-slate-800">
+            <p className="mt-3 text-sm font-medium leading-relaxed text-slate-800">
               &quot;Hissi pysähtyy kerrosten välillä ja oveni edessä on vettä
               lattialla…&quot;
             </p>
-            <div className="mt-4 space-y-2 rounded-xl border border-blue-100 bg-white/80 p-4 text-sm text-slate-700">
+            <div className="mt-5 space-y-2.5 rounded-xl border border-blue-100/95 bg-white/95 p-4 text-sm leading-relaxed text-slate-700 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
               <p>
-                <span className="font-semibold text-blue-700">AI:</span>{" "}
-                Luokiteltu: tekniikka / hissi. Kiireellisyys: korkea.
+                <span className="font-semibold text-blue-800">Tiivistelmä:</span>{" "}
+                Tekniikka / hissi. Kiireellisyys: korkea.
               </p>
               <p>
-                <span className="font-semibold text-slate-800">Kohde:</span>{" "}
-                Huolto + ilmoitus isännöitsijälle.
+                <span className="font-semibold text-slate-800">Seuraava askel:</span>{" "}
+                Huolto ja isännöitsijä tiedoksi.
               </p>
             </div>
           </Surface>
         </div>
 
         <div>
-          <h2 className="mb-6 text-center text-2xl font-semibold tracking-tight text-slate-900">
-            Miksi SITEOS?
-          </h2>
-          <div className="grid gap-6 md:grid-cols-3">
+          <p className="section-label text-center">Käytännössä</p>
+          <p className="mx-auto mb-12 max-w-2xl text-balance text-center text-2xl font-semibold tracking-tight text-slate-900">
+            Mitä tästä jää sähköpostiin verrattuna
+          </p>
+          <div className="grid gap-6 md:grid-cols-3 md:gap-8">
             {features.map((f) => (
-              <Surface key={f.title} padding="lg">
-                <h3 className="text-lg font-semibold text-slate-900">{f.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">
+              <Surface key={f.title} padding="lg" variant="elevated">
+                <h3 className="text-lg font-semibold tracking-tight text-slate-900">
+                  {f.title}
+                </h3>
+                <p className="mt-3 text-sm leading-[1.6] text-slate-600">
                   {f.text}
                 </p>
               </Surface>
@@ -87,61 +97,29 @@ export default function Home() {
         </div>
 
         <Surface variant="elevated" padding="lg" className="mx-auto w-full max-w-4xl">
-          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-blue-600">
-                Demoesitys
+              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-blue-700">
+                Koko ketju demossa
               </p>
-              <p className="mt-1 text-lg font-semibold text-slate-900">
-                Koe koko ketju: asukas → AI → huolto → hallitus
+              <p className="mt-3 text-lg font-semibold leading-snug text-slate-900">
+                Asukas → käsittely → huolto → hallitus samassa ketjussa
               </p>
-              <p className="mt-1 text-sm text-slate-600">
-                Aloita ohjausnäkymästä tai asukaspolusta.
+              <p className="mt-2 text-sm leading-[1.6] text-slate-600">
+                Voit aloittaa ohjausnäkymästä tai käydä vaiheet läpi järjestyksessä.
               </p>
             </div>
-            <div className="flex flex-col gap-2 sm:flex-row">
-              <Link
-                href="/asukas"
-                className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-blue-600/20 hover:bg-blue-500"
-              >
-                Asukkaan polku
+            <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
+              <Link href="/asukas" className="btn-primary text-center">
+                Asukas AI
               </Link>
-              <Link
-                href="/huolto"
-                className="inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 hover:border-blue-200"
-              >
+              <Link href="/huolto" className="btn-secondary text-center">
                 Huollon näkymä
               </Link>
             </div>
           </div>
         </Surface>
       </section>
-
-      <footer className="mt-auto border-t border-slate-200/80 bg-white/60 py-10">
-        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-          <div className="flex items-center gap-2">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-xs font-bold text-white">
-              S
-            </span>
-            <span className="font-semibold text-slate-900">SITEOS</span>
-            <span className="text-sm text-slate-500">Taloyhtiöille</span>
-          </div>
-          <p className="text-sm text-slate-600">
-            © {new Date().getFullYear()} SITEOS. Esittelyversio.
-          </p>
-          <div className="flex flex-wrap gap-4 text-sm">
-            <Link href="/hallitus" className="text-blue-600 hover:underline">
-              Hallitus
-            </Link>
-            <Link href="/hata" className="text-blue-600 hover:underline">
-              Hätäohjeet
-            </Link>
-            <Link href="/toiveet" className="text-blue-600 hover:underline">
-              Toiveet
-            </Link>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

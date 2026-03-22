@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fafc;
+  --background: #f4f7fb;
   --foreground: #0f172a;
   --accent: #2563eb;
   --accent-soft: #dbeafe;
@@ -24,31 +24,195 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+@layer components {
+  .page-shell {
+    @apply mx-auto w-full max-w-6xl flex-1 px-4 py-14 sm:px-6 lg:px-8 lg:py-16;
+  }
+
+  .page-shell-narrow {
+    @apply mx-auto w-full max-w-3xl flex-1 px-4 py-14 sm:px-6 lg:px-8 lg:py-16;
+  }
+
+  .section-y {
+    @apply mt-16 lg:mt-20;
+  }
+
+  .section-y-tight {
+    @apply mt-12 lg:mt-14;
+  }
+
+  .section-label {
+    @apply mb-5 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-600;
+  }
+
+  .section-label-tight {
+    @apply mb-4 text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-600;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-[0_1px_2px_rgba(37,99,235,0.2),0_6px_16px_-4px_rgba(37,99,235,0.35)] transition hover:bg-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#f4f7fb];
+  }
+
+  .btn-primary-lg {
+    @apply inline-flex items-center justify-center rounded-xl bg-blue-600 px-7 py-3.5 text-sm font-semibold text-white shadow-[0_2px_4px_rgba(37,99,235,0.22),0_10px_28px_-6px_rgba(37,99,235,0.4)] transition hover:bg-blue-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#f4f7fb];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-xl border border-slate-200/95 bg-white px-6 py-3 text-sm font-semibold text-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.04)] transition hover:border-slate-300 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/25 focus-visible:ring-offset-2 focus-visible:ring-offset-[#f4f7fb];
+  }
+
+  .btn-secondary-lg {
+    @apply inline-flex items-center justify-center rounded-xl border border-slate-200/95 bg-white px-7 py-3.5 text-sm font-semibold text-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.04)] transition hover:border-slate-300 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/25 focus-visible:ring-offset-2 focus-visible:ring-offset-[#f4f7fb];
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center rounded-xl border border-blue-200/80 bg-blue-50/90 px-4 py-2 text-sm font-semibold text-blue-900 transition hover:border-blue-300 hover:bg-blue-100/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[#f4f7fb];
+  }
+
+  .chip-suggestion {
+    @apply rounded-full border border-slate-200/90 bg-white px-4 py-2 text-left text-sm leading-snug text-slate-700 shadow-sm shadow-slate-900/[0.03] transition hover:border-blue-200 hover:bg-slate-50/90 hover:shadow-md hover:shadow-slate-900/[0.05];
+  }
+
+  .stat-value {
+    @apply text-3xl font-semibold tracking-tight tabular-nums text-slate-900 sm:text-[2.05rem] sm:leading-none;
+  }
+
+  .headline-hero {
+    @apply text-balance text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl lg:text-[3.25rem] lg:leading-[1.08];
+  }
+
+  .link-inline {
+    @apply text-sm font-semibold text-blue-600 transition hover:text-blue-700 hover:underline underline-offset-2;
+  }
+
+  .shadow-card {
+    box-shadow:
+      0 1px 2px rgba(15, 23, 42, 0.05),
+      0 12px 32px -10px rgba(15, 23, 42, 0.1);
+  }
+
+  .shadow-card-accent {
+    box-shadow:
+      0 1px 2px rgba(15, 23, 42, 0.04),
+      0 10px 28px -8px rgba(37, 99, 235, 0.08);
+  }
+
+  .shadow-card-blue-lg {
+    box-shadow:
+      0 1px 2px rgba(15, 23, 42, 0.04),
+      0 12px 36px -10px rgba(37, 99, 235, 0.12);
+  }
+
+  .shadow-card-hero {
+    box-shadow:
+      0 1px 2px rgba(15, 23, 42, 0.05),
+      0 16px 40px -12px rgba(16, 185, 129, 0.12);
+  }
+
+  .shadow-card-amber {
+    box-shadow:
+      0 1px 2px rgba(15, 23, 42, 0.04),
+      0 10px 28px -8px rgba(180, 83, 9, 0.12);
+  }
+
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:border focus:border-slate-200 focus:bg-white focus:px-4 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-slate-900 focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500/40;
+  }
 }
 
 .gradient-page {
   background: linear-gradient(
-    165deg,
-    #f8fafc 0%,
-    #eff6ff 45%,
+    168deg,
+    #f5f8fc 0%,
+    #eef2f8 45%,
     #f1f5f9 100%
   );
+}
+
+.gradient-talous {
+  background:
+    radial-gradient(ellipse 90% 55% at 100% -15%, rgba(16, 185, 129, 0.09), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 0% 0%, rgba(37, 99, 235, 0.07), transparent 50%),
+    linear-gradient(168deg, #f3fcf7 0%, #f4f7fb 42%, #f0f4fc 100%);
 }
 
 .gradient-hero {
   background: radial-gradient(
       ellipse 120% 80% at 50% -20%,
-      rgba(37, 99, 235, 0.12),
+      rgba(37, 99, 235, 0.1),
       transparent 55%
     ),
-    linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+    linear-gradient(180deg, #ffffff 0%, #f4f7fb 100%);
 }
 
 .gradient-control {
-  background: linear-gradient(
-    135deg,
-    #eff6ff 0%,
-    #f8fafc 40%,
-    #eef2ff 100%
-  );
+  background:
+    radial-gradient(
+      ellipse 110% 70% at 50% -25%,
+      rgba(37, 99, 235, 0.11),
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 55% 45% at 100% 0%,
+      rgba(99, 102, 241, 0.07),
+      transparent 52%
+    ),
+    linear-gradient(165deg, #eef5ff 0%, #f4f7fb 44%, #eef2ff 100%);
+}
+
+@keyframes modal-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@layer utilities {
+  .animate-modal-rise {
+    animation: modal-rise 0.28s ease-out both;
+  }
+
+  .animate-nav-role {
+    animation: nav-role 0.22s ease-out both;
+  }
+}
+
+@keyframes nav-role {
+  from {
+    opacity: 0.72;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gradient-page,
+  .gradient-talous,
+  .gradient-hero,
+  .gradient-control {
+    background: var(--background);
+  }
+
+  .blur-blob {
+    opacity: 0 !important;
+  }
+
+  .animate-modal-rise {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .animate-nav-role {
+    animation: none;
+    opacity: 1;
+  }
 }
