@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const navItems = [
-  { href: "/v2", label: "Etusivu" },
+  { href: "/v2", label: "Koti" },
   { href: "/v2/talous", label: "Talous" },
   { href: "/v2/dokumentit", label: "Dokumentit" },
   { href: "/v2/kilpailutus", label: "Kilpailutus" },
