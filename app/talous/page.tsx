@@ -7,11 +7,11 @@ import { TalousAiObservationAndRecommendation } from "./sections/TalousAiObserva
 import { TalousAiTrustAndCta } from "./sections/TalousAiTrustAndCta";
 
 export const metadata: Metadata = {
-  title: "Talous AI",
+  title: "Talous",
   description:
     "Ennakoi kustannukset ja tasaa ne ajoissa. Havainto, suositus ja vertailu päätöksentekoon.",
   openGraph: {
-    title: "Talous AI",
+    title: "Talous",
     description:
       "Demossa: ennakoiva vastike vs. ei toimenpiteitä — vaikutus taloyhtiölle ja asuntojen arvoon.",
     type: "website",

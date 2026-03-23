@@ -70,7 +70,7 @@ export function TarjousvertailuSection() {
             <SparkIcon />
           </div>
           <div className="min-w-0 flex-1">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-indigo-900">AI-yhteenveto</p>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-indigo-900">Yhteenveto</p>
             <p className="mt-3 text-sm leading-relaxed text-slate-800">
               <span className="font-medium text-slate-900">Sähköurakointi Oy</span> on edullisin (9 800 €).{" "}
               <span className="font-medium text-slate-900">ValoTekniikka Ab</span> on nopein (2 viikkoa) ja tarjoaa

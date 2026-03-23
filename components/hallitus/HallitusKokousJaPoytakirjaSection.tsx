@@ -26,7 +26,7 @@ const minutesEntries = [
     summary:
       "Keskustelussa arvioitiin pitkän aikavälin korjaustarpeita ja mahdollisuutta tasata tulevia kustannuksia ennakoivasti.",
     responsible: "Hallitus",
-    nextStep: "Vaihtoehtojen vertailu Talous AI:ssa",
+    nextStep: "Vaihtoehtojen vertailu talousnäkymässä",
   },
 ] as const;
 
@@ -121,7 +121,7 @@ function AutomaattinenPoytakirjaCard() {
 function AiPaatosehdotuksetCard() {
   return (
     <Surface variant="accent" padding="lg" className="h-full ring-blue-100/60">
-      <h3 className="text-base font-semibold tracking-tight text-slate-900">AI-päätösehdotukset</h3>
+      <h3 className="text-base font-semibold tracking-tight text-slate-900">Ehdotetut toimenpiteet</h3>
       <p className="mt-2 text-sm leading-relaxed text-slate-600">
         Ehdotukset perustuvat talous- ja historiatietoon — tukemaan hallituksen valmistelua ennen vahvistusta.
       </p>
@@ -183,8 +183,8 @@ export function HallitusKokousJaPoytakirjaSection() {
         Kokous ja pöytäkirja
       </h2>
       <p className="mb-10 max-w-2xl text-sm leading-relaxed text-slate-600">
-        SITEOS muodostaa kokouspöytäkirjan automaattisesti, tukee päätöksiä AI-ehdotuksilla ja jakaa lopputuloksen
-        hallitustyön mukaisesti — ilman erillistä litterointinäkymää.
+        SITEOS muodostaa kokouspöytäkirjan automaattisesti, ehdottaa seuraavia toimenpiteitä järjestelmän datan
+        perusteella ja jakaa lopputuloksen hallitustyön mukaisesti — ilman erillistä litterointinäkymää.
       </p>
 
       <div className="space-y-10">

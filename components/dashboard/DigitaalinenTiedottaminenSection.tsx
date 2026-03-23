@@ -40,7 +40,7 @@ export function DigitaalinenTiedottaminenSection() {
 
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(260px,340px)] lg:items-start lg:gap-8">
           <Surface variant="default" padding="lg" className="border-slate-200/95 bg-white lg:min-h-0">
-            <h3 className="text-base font-semibold tracking-tight text-slate-900">AI-suositus</h3>
+            <h3 className="text-base font-semibold tracking-tight text-slate-900">Suositus</h3>
             <p className="mt-3 text-sm leading-relaxed text-slate-700">
               SITEOS suosittelee lähettämään asukkaille siirtymäkyselyn digitaalisten tiedotteiden
               ensisijaisesta käytöstä.

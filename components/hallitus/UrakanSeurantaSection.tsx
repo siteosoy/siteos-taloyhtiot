@@ -152,7 +152,7 @@ export function UrakanSeurantaSection() {
             <div className="flex gap-3">
               <SparkMini />
               <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-indigo-900">AI huomio</p>
+                <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-indigo-900">Huomio</p>
                 <p className="mt-1.5 text-sm leading-relaxed text-slate-800">
                   Asennus etenee suunnitellusti ilman viivästyksiä.
                 </p>

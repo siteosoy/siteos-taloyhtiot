@@ -14,9 +14,10 @@ const links: { href: string; label: string; highlight?: boolean }[] = [
   { href: "/dashboard", label: "Työpöytä" },
   { href: "/talous", label: "Talous", highlight: true },
   { href: "/historia", label: "Historia" },
-  { href: "/asukas", label: "Asukas AI" },
+  { href: "/asukas", label: "Asukas" },
   { href: "/huolto", label: "Huolto" },
   { href: "/hallitus", label: "Hallitus" },
+  { href: "/dokumentit", label: "Dokumentit" },
   { href: "/toiveet", label: "Toiveet" },
   { href: "/hata", label: "Hätä" },
 ];

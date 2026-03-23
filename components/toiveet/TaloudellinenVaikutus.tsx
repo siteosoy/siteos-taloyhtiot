@@ -76,7 +76,7 @@ export function TaloudellinenVaikutus({ data }: Props) {
         </div>
       </div>
 
-      {/* AI-suositus */}
+      {/* Suositus */}
       <div
         className={`relative overflow-hidden rounded-2xl border border-indigo-200/70 bg-gradient-to-br from-indigo-50/95 via-blue-50/50 to-white px-5 py-5 shadow-md shadow-indigo-900/[0.07] ring-1 ring-indigo-100/80`}
       >
@@ -86,7 +86,7 @@ export function TaloudellinenVaikutus({ data }: Props) {
             <SparkIcon />
           </div>
           <div className="min-w-0 flex-1">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-indigo-900">AI-suositus</p>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-indigo-900">Suositus</p>
             <p className="mt-2 text-[15px] font-medium leading-relaxed text-slate-900">{data.aiSuositus}</p>
           </div>
         </div>

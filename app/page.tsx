@@ -111,7 +111,7 @@ export default function Home() {
             </div>
             <div className="flex w-full shrink-0 flex-col gap-3 sm:w-auto sm:flex-row">
               <Link href="/asukas" className="btn-primary w-full text-center sm:w-auto">
-                Asukas AI
+                Asukas
               </Link>
               <Link href="/huolto" className="btn-secondary w-full text-center sm:w-auto">
                 Huollon näkymä

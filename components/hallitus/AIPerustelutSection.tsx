@@ -34,9 +34,9 @@ const cases = [
 
 export function AIPerustelutSection() {
   return (
-    <section className="mt-10 border-t border-slate-200/80 pt-10" aria-labelledby="ai-perustelut-otsikko">
-      <h2 id="ai-perustelut-otsikko" className="section-label">
-        AI perustelut
+    <section className="mt-10 border-t border-slate-200/80 pt-10" aria-labelledby="perustelut-otsikko">
+      <h2 id="perustelut-otsikko" className="section-label">
+        Perusteet
       </h2>
       <p className="mb-8 max-w-2xl text-sm leading-relaxed text-slate-600">
         Malli painottaa tarjoajia projektityypin mukaan: alla esimerkkejä siitä, mitä kriteerejä vertailussa käytettiin ja
@@ -64,7 +64,7 @@ export function AIPerustelutSection() {
             </ul>
 
             <div className="mt-6 border-l-[3px] border-indigo-300/90 bg-gradient-to-r from-indigo-50/90 to-slate-50/40 px-4 py-3.5">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-indigo-900/90">AI-yhteenveto</p>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-indigo-900/90">Yhteenveto</p>
               <p className="mt-2 text-sm leading-relaxed text-slate-800">{c.summary}</p>
             </div>
           </article>

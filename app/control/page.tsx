@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { DokumentitSection } from "@/components/control/DokumentitSection";
 import { DigitaalinenTiedottaminenSection } from "@/components/dashboard/DigitaalinenTiedottaminenSection";
 import { RoleEmphasis } from "@/components/role/RoleEmphasis";
 import { RoleViewBadge } from "@/components/role/RoleViewBadge";
@@ -50,7 +51,7 @@ const automations = [
 const whySiteos = [
   {
     title: "Vähemmän kysymyksiä",
-    body: "AI vastaa asukkaiden yleisiin kysymyksiin automaattisesti taloyhtiön omien sääntöjen perusteella.",
+    body: "SITEOS-järjestelmä vastaa asukkaiden yleisiin kysymyksiin automaattisesti taloyhtiön omien sääntöjen perusteella.",
   },
   {
     title: "Selkeä toiminta",
@@ -58,7 +59,7 @@ const whySiteos = [
   },
   {
     title: "Parempi ennakointi",
-    body: "Talous AI auttaa välttämään kalliita yllätyksiä ja ajoittamaan remontit oikein.",
+    body: "Talousnäkymä auttaa välttämään kalliita yllätyksiä ja ajoittamaan remontit oikein.",
   },
 ] as const;
 
@@ -102,7 +103,7 @@ export default function ControlPage() {
                 key={item.title}
                 variant="elevated"
                 padding="lg"
-                className="border-l-[3px] border-l-slate-300/90 ring-1 ring-slate-200/80"
+                className="border border-slate-200/70 border-l-[3px] border-l-slate-300/90 bg-white/90 shadow-sm shadow-slate-900/[0.02]"
               >
                 <p className="text-[11px] font-medium tabular-nums text-slate-400">
                   {String(i + 1).padStart(2, "0")}
@@ -119,8 +120,8 @@ export default function ControlPage() {
 
         {/* Talous ja analyysi */}
         <RoleEmphasis when={["hallitus", "isannointi"]}>
-          <section className="section-y" aria-labelledby="control-ai-heading">
-          <h2 id="control-ai-heading" className="section-label">
+          <section className="section-y" aria-labelledby="control-talous-heading">
+          <h2 id="control-talous-heading" className="section-label">
             Talous ja analyysi
           </h2>
           <Link
@@ -376,50 +377,7 @@ export default function ControlPage() {
 
         <DigitaalinenTiedottaminenSection />
 
-        {/* Dokumentit */}
-        <section className="section-y" aria-labelledby="control-docs-heading">
-          <h2 id="control-docs-heading" className="section-label">
-            Dokumentit
-          </h2>
-          <Surface padding="lg" variant="elevated" className="ring-1 ring-slate-200/80">
-            <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between lg:gap-10">
-              <div className="min-w-0 max-w-xl space-y-3">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-slate-700 ring-1 ring-slate-200/90">
-                    AI-seuranta
-                  </span>
-                  <span className="text-xs text-slate-500">Päivitetty 02/2027</span>
-                </div>
-                <h3 className="text-lg font-semibold tracking-tight text-slate-900">
-                  Pelastussuunnitelma
-                </h3>
-                <p className="text-sm leading-relaxed text-slate-600">
-                  Muutokset ja velvoitteet seurannassa; hyväksyntä jää taloyhtiölle.
-                </p>
-              </div>
-              <ul className="w-full shrink-0 space-y-2.5 text-sm text-slate-700 lg:max-w-sm">
-                <li className="flex gap-2">
-                  <span className="text-slate-400" aria-hidden>
-                    ·
-                  </span>
-                  Riskikartoitus ja poistumistiet tarkistettu
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-slate-400" aria-hidden>
-                    ·
-                  </span>
-                  Vastuut ja yhteystiedot päivitetty
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-slate-400" aria-hidden>
-                    ·
-                  </span>
-                  Uudet tarkastusvälit huomioitu
-                </li>
-              </ul>
-            </div>
-          </Surface>
-        </section>
+        <DokumentitSection headingId="control-docs-heading" />
 
         {/* Seuraavat tehtävät */}
         <section className="section-y pb-2" aria-labelledby="control-tasks-heading">

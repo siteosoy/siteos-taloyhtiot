@@ -1,8 +1,8 @@
-/** Staattinen demo — Talous AI, päätös ja vaikutus */
+/** Staattinen demo — talousnäkymä, päätös ja vaikutus */
 export const talousAiDemo = {
   header: {
-    title: "Talous AI",
-    subtitle: "Ennakoi kustannukset ja tasaa ne ajoissa",
+    title: "Talous",
+    subtitle: "Ennakoi kustannukset ja tasaa ne ajoissa järjestelmän datan perusteella",
   },
   observation: {
     title: "Havainto",

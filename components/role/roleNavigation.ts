@@ -2,10 +2,10 @@ import type { UserRole } from "./types";
 
 /** Nav item labels visible per role (matches `Navbar` link labels). */
 export const roleNavigation: Record<UserRole, readonly string[]> = {
-  asukas: ["Etusivu", "Asukas AI", "Huolto"],
-  hallitus: ["Etusivu", "Työpöytä", "Talous", "Hallitus", "Toiveet"],
-  isannointi: ["Etusivu", "Työpöytä", "Huolto", "Hallitus"],
-  huolto: ["Etusivu", "Huolto"],
+  asukas: ["Etusivu", "Asukas", "Huolto"],
+  hallitus: ["Etusivu", "Työpöytä", "Talous", "Hallitus", "Dokumentit", "Toiveet"],
+  isannointi: ["Etusivu", "Työpöytä", "Huolto", "Hallitus", "Dokumentit"],
+  huolto: ["Etusivu", "Huolto", "Dokumentit"],
 };
 
 export function isNavLabelVisibleForRole(

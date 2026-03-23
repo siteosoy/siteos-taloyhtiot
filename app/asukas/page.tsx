@@ -352,7 +352,7 @@ export default function AsukasPage() {
       <div className="page-shell-narrow">
         <PageHeader
           badge={<RoleViewBadge />}
-          eyebrow="Asukas AI"
+          eyebrow="Asukas"
           title="Selkeät vastaukset taloyhtiön sääntöjen pohjalta"
           description="Kysy omalla tavallasi tai tutustu esimerkkeihin. Demo näyttää, miten ohjeista poimitaan oikeat vaatimukset ja etenemisjärjestys — ilman että asukkaan tarvitsee itse silmäillä koko sääntökirjaa."
         />
